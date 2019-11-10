@@ -1,1 +1,3 @@
-## React Starter Kit
+### yarn install
+
+### yarn start
