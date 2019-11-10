@@ -37,6 +37,15 @@ const staticAssetName = isDebug
 // Common configuration chunk to be used for both
 // client-side (client.js) and server-side (server.js) bundles
 // -----------------------------------------------------------------------------
+const mySpecialWindowFunction = () => {
+  /* START HACK */
+  if (!process.env.BROWSER) {
+    global.window = {}; // Temporarily define window for server-side
+  }
+  /* END HACK */
+
+  return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+};
 
 const config = {
   context: ROOT_DIR,
@@ -335,6 +344,7 @@ const clientConfig = {
             return acc;
           }, Object.create(null));
           fs.writeFileSync(chunkFileName, JSON.stringify(chunkFiles, null, 2));
+          mySpecialWindowFunction();
         } catch (err) {
           console.error(`ERROR: Cannot write ${chunkFileName}: `, err);
           if (!isDebug) process.exit(1);

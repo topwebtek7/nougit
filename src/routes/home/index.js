@@ -14,17 +14,36 @@ import Layout from '../../components/Layout';
 async function action({ fetch }) {
   const resp = await fetch('/graphql', {
     body: JSON.stringify({
-      query: '{news{title,link,content}}',
+      query: `{getEntries(limit:5, page: 0){
+        author{
+          name,
+          picture,
+          score
+        },
+        popularity,
+        isTrending,
+        date,
+        title,
+        description,
+        numComments,
+        thumbnail,
+        codeSubmissionTotal,
+        pledgeTotal,
+        pledgeGoal,
+        pledgerCount,
+        status}}`,
     }),
   });
   const { data } = await resp.json();
-  if (!data || !data.news) throw new Error('Failed to load the news feed.');
+
+  if (!data || !data.getEntries)
+    throw new Error('Failed to load the getEntries feed.');
   return {
-    title: 'React Starter Kit',
+    title: 'Nougit Test',
     chunks: ['home'],
     component: (
       <Layout>
-        <Home news={data.news} />
+        <Home entries={data.getEntries} />
       </Layout>
     ),
   };
