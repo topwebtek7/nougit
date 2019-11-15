@@ -2,10 +2,9 @@
 .taskItem {
   margin: 0 0 2rem;
   border: 1px solid #eee;
-  box-shadow: 2px 2px 1px 1px rgba(50, 50, 50, 0.08);
+  box-shadow: 2px 2px 2px 2px rgba(50, 50, 50, 0.08);
   width: 500px;
   border-radius: 12px;
-  padding: 20px;
   position: relative;
 }
 
@@ -47,12 +46,13 @@
 .authorContainer .name {
   font-size: 17px;
   font-weight: bold;
+  line-height: 50px;
 }
 
-.authorContainer .score {
+/* .authorContainer .score {
   color: #888;
   font-size: 14px;
-}
+} */
 
 .profile {
   padding-right: 20px;
@@ -107,7 +107,7 @@
 }
 
 .submissionContainer {
-  background: rgba(240, 240, 240, 0.1);
+  background: rgba(240, 240, 240, 0.3);
   text-align: center;
   padding: 7px 0;
   color: #aeb3c1;
@@ -143,4 +143,35 @@
   line-height: 20px;
   font-size: 12px;
   margin-left: 10px;
+}
+
+.taskContent {
+  padding: 20px;
+}
+
+.commentContainer {
+  background: rgba(240, 240, 240, 0.5);
+  text-align: center;
+  padding: 10px 20px;
+  color: #aeb3c1;
+  display: flex;
+  flex-direction: row;
+}
+
+.commentContainer .icon {
+  cursor: pointer;
+}
+
+.commentContainer svg {
+  margin-right: 6px;
+}
+
+.shareBtn {
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.ellipsisBtn {
+  margin-left: auto;
+  cursor: pointer;
 }

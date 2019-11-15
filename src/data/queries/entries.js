@@ -37,7 +37,9 @@ const entries = {
     const pageId = page || 0;
     let entriesData = entriesJson;
     if (isTrending !== undefined) {
-      entriesData = [...entries.filter(item => item.isTrending === isTrending)];
+      entriesData = [
+        ...entriesJson.filter(item => item.isTrending === isTrending),
+      ];
     }
     if (status !== undefined) {
       entriesData = [...entriesData.filter(item => item.status === status)];
